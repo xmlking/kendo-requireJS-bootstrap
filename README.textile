@@ -1,4 +1,40 @@
-kendo-requireJS-bootstrap
-=========================
+h1(main). kendo-requireJS-bootstrap
 
 AMD-aware kendoUI seed project with Twitter Bootstrap and Themes
+
+h2. Contents
+
+# "Installation":#install
+# "Quick Start":#quick-start
+# "Convention Properties":#convention
+# "Including CSS Stylesheets":#stylesheets
+# "Template Variable Binding":#templateVars
+
+h2(#install). Installation
+
+To create the plugin jar do
+
+bc. gradle
+
+The jar wil be created under _build/lib_
+
+h2(#quick-start). Quick Start
+
+build.gradle
+
+bc.. buildscript {
+    dependencies {
+        classpath files('lib/readme.jar')
+    }
+}
+
+apply plugin: 'readme'
+
+//build logic...
+
+p. Put the README.textile template in a directory under the root of the project called _readme_
+
+bc. .
+|-- lib/readme.jar
+`-- readme
+    `--README.textile
