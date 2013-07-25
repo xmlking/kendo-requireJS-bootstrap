@@ -1,5 +1,5 @@
 define(['jquery', 
-		'./kendo.led.js',
+		'scripts/libs/led/kendo.led.js',
 		'css!./kendo.led.css'
 		], function($, LED) {
 		$(function() {  
