@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Google Go Websocket Server and Smoothie Charts in Action</title>
+	<style type="text/css">
+	body {
+		background-color: #111111;
+		color: #eeeeee;
+		font-family: tahoma, arial, sans-serif;
+		padding-left: 100px;
+	}
+	
+	h4 {
+		margin-bottom: 1px;
+	}
+	</style>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://cdn.sockjs.org/sockjs-0.3.4.min.js"></script>
+  	<script type="text/javascript" src="js/vertxbus.js"></script>	
+	<script type="text/javascript" src="js/smoothie/smoothie.js"></script>
+	
+	<script type="text/javascript" src="js/jquery-knob/jquery.knob.js"></script>
+	<script type="text/javascript">
+	
+	function animateKnobToNewValue(knob, newVal) {
+		console.log("old : "+ knob.val() + " new : "+newVal)
+		if(knob.val() != newVal) {
+			$({value: knob.val()}).animate({value: newVal}, {
+			    duration: 200,
+			    easing:'swing',
+			    step: function() 
+			    {
+			    	console.log("this.value : "+ this.value + " Math.ceil(this.value) : "+Math.ceil(this.value))
+			    	knob.val(Math.ceil(this.value)).trigger('change');
+			    }
+			});
+		}
+	}
+
+	 
+		$(function() {
+			
+			var tempInSeries 	= new TimeSeries();
+			var tempOutSeries 	= new TimeSeries();	
+			var rainSeries 		= new TimeSeries();
+			var humiditySeries 	= new TimeSeries();
+			var pressureSeries 	= new TimeSeries();
+			var windGustSeries 	= new TimeSeries();
+			
+			var tempInOptions 	= { strokeStyle: 'rgba(255, 0, 0, 1)', fillStyle: 'rgba(255, 0, 0, 0.1)', lineWidth: 3 };
+			var tempOutOptions 	= { strokeStyle: 'rgba(0, 255, 0, 1)', fillStyle: 'rgba(0, 255, 0, 0.1)', lineWidth: 3 };
+			var rainOptions 	= { strokeStyle: 'rgba(255, 0, 0, 1)', fillStyle: 'rgba(255, 0, 0, 0.1)', lineWidth: 3 };
+			var humidityOptions = { strokeStyle: 'rgba(0, 255, 0, 1)', fillStyle: 'rgba(0, 255, 0, 0.1)', lineWidth: 3 };
+			var pressureOptions = { strokeStyle: 'rgba(0, 0, 255, 1)', fillStyle: 'rgba(0, 0, 255, 0.1)', lineWidth: 3 };
+			var windGustOptions = { strokeStyle: 'rgba(255, 255, 0, 1)', fillStyle: 'rgba(255, 255, 0, 0.1)', lineWidth: 3 };
+
+			var tempChart = new SmoothieChart({ millisPerPixel: 20, grid: { strokeStyle: '#555555', lineWidth: 1, millisPerLine: 1000, verticalSections: 4 }});
+			tempChart.addTimeSeries(tempInSeries, tempInOptions);
+			tempChart.addTimeSeries(tempOutSeries, tempOutOptions);
+			tempChart.streamTo(document.getElementById("temp"), 1000);
+			
+			var rainHumidityPressureChart = new SmoothieChart({ millisPerPixel: 20, grid: { strokeStyle: '#555555', lineWidth: 1, millisPerLine: 1000, verticalSections: 4 }});
+			rainHumidityPressureChart.addTimeSeries(rainSeries, rainOptions);
+			rainHumidityPressureChart.addTimeSeries(humiditySeries, humidityOptions);
+			rainHumidityPressureChart.addTimeSeries(pressureSeries, pressureOptions);
+			rainHumidityPressureChart.streamTo(document.getElementById("rainHumidityPressure"), 1000);
+			
+			var windChart = new SmoothieChart({ millisPerPixel: 20, grid: { strokeStyle: '#555555', lineWidth: 1, millisPerLine: 1000, verticalSections: 4 }});
+			windChart.addTimeSeries(windGustSeries, windGustOptions);
+			windChart.streamTo(document.getElementById("wind"), 1000);
+
+			var eb = new vertx.EventBus(window.location.protocol + '//' + 
+					window.location.hostname + ':' + window.location.port + '/eventbus');
+
+			eb.onopen = function() {
+				// Get the static data
+				$("#log").text("Connected");
+				// Get the realtime data
+				eb.registerHandler('weather.tempIn', function(msg, replyTo) {
+					tempInSeries.append(new Date().getTime(), parseFloat(msg));
+					//$('#tempInKnob').val(msg).trigger('change')
+					animateKnobToNewValue($('#tempInKnob'), msg);
+           		 
+				}); 
+				
+				eb.registerHandler('weather.tempOut', function(msg, replyTo) {
+					tempOutSeries.append(new Date().getTime(), parseFloat(msg));
+					$('#tempOutKnob').val(msg).trigger('change')
+				}); 
+				
+				eb.registerHandler('weather.rain', function(msg, replyTo) {
+					rainSeries.append(new Date().getTime(), parseFloat(msg));
+					animateKnobToNewValue($('#rainKnob'), msg);
+				}); 
+				
+				eb.registerHandler('weather.humidity', function(msg, replyTo) {
+					humiditySeries.append(new Date().getTime(), parseFloat(msg));
+					animateKnobToNewValue($('#humidityKnob'), msg);
+				}); 
+				
+				eb.registerHandler('weather.pressure', function(msg, replyTo) {
+					pressureSeries.append(new Date().getTime(), parseFloat(msg));
+					animateKnobToNewValue($('#pressureKnob'), msg);
+				}); 
+				
+				eb.registerHandler('weather.windGust', function(msg, replyTo) {
+					windGustSeries.append(new Date().getTime(), parseFloat(msg));
+					$('#windGustKnob').val(msg).trigger('change')
+				}); 
+				
+				eb.registerHandler('weather.windDirection', function(msg, replyTo) {
+					$('#windDirectionKnob').val(msg).trigger('change')
+				}); 
+				
+
+			};
+			
+			eb.onclose = function() {
+				$("#log").text("Connection closed");
+				eb = null;
+			};
+					 
+
+            $(".knob").knob({
+                /*change : function (value) {
+                    //console.log("change : " + value);
+                },
+                release : function (value) {
+                    console.log("release : " + value);
+                },
+                cancel : function () {
+                    console.log("cancel : " + this.value);
+                },*/
+                draw : function () {
+
+                    // "tron" case
+                    if(this.$.data('skin') == 'tron') {
+
+                        var a = this.angle(this.cv)  // Angle
+                            , sa = this.startAngle          // Previous start angle
+                            , sat = this.startAngle         // Start angle
+                            , ea                            // Previous end angle
+                            , eat = sat + a                 // End angle
+                            , r = true;
+
+                        this.g.lineWidth = this.lineWidth;
+
+                        this.o.cursor
+                            && (sat = eat - 0.3)
+                            && (eat = eat + 0.3);
+
+                        if (this.o.displayPrevious) {
+                            ea = this.startAngle + this.angle(this.value);
+                            this.o.cursor
+                                && (sa = ea - 0.3)
+                                && (ea = ea + 0.3);
+                            this.g.beginPath();
+                            this.g.strokeStyle = this.previousColor;
+                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
+                            this.g.stroke();
+                        }
+
+                        this.g.beginPath();
+                        this.g.strokeStyle = r ? this.o.fgColor : this.fgColor ;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false);
+                        this.g.stroke();
+
+                        this.g.lineWidth = 2;
+                        this.g.beginPath();
+                        this.g.strokeStyle = this.o.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                        this.g.stroke();
+
+                        return false;
+                    }
+                }
+            });
+            
+
+			 
+			
+		});
+	</script>
+</head>
+
+<body>
+ 	<h1>Sumo  Weather</h1>
+	<div id="log"></div>
+	
+    <h4>Temperature In , Out   </h4>
+    <canvas id="temp" width="500" height="100"></canvas>
+    <input id="tempInKnob"  class="knob" data-width="100" data-angleOffset="-125" data-angleArc="250"   data-readOnly="true" data-min="-50" data-max="125" value="75">
+    <input id="tempOutKnob" class="knob" data-width="100" data-angleOffset="-125" data-fgColor="#ffec03" data-skin="tron" data-thickness=".2"  data-readOnly=true data-min="-50" data-max="125" value="75">
+    
+    <h4>Rain Humidity Pressure</h4>
+    <canvas id="rainHumidityPressure" width="500" height="100"></canvas>
+ 	<input id="rainKnob" class="knob" data-width="100" data-angleOffset="-125" data-fgColor="#ffec03" data-skin="tron" data-thickness=".2"  data-readOnly=true data-min="-50" data-max="125" value="75">
+  	<input id="humidityKnob" class="knob" data-width="100" data-angleOffset="-125" data-fgColor="#ffec03" data-skin="tron" data-thickness=".2"  data-readOnly=true data-min="-50" data-max="125" value="75">
+   	<input id="pressureKnob" class="knob" data-width="100" data-angleOffset="-125" data-fgColor="#ffec03" data-skin="tron" data-thickness=".2"  data-readOnly=true data-min="-50" data-max="125" value="75">
+    <h4>Wind Gust</h4>
+    <canvas id="wind" width="500" height="100"></canvas>
+    <input id="windDirectionKnob" class="knob" data-width="100" data-cursor="true"  data-fgColor="#ffec03" data-skin="tron" data-thickness=".2"  data-readOnly=true data-min="0" data-max="360" value="75">
+ 	<input id="windGustKnob"  	  class="knob" data-width="100" data-angleOffset="-125" data-angleArc="250"   data-readOnly="true" data-min="-50" data-max="125" value="75">
+    <p><em>This is live data.</em></p>
+    
+	<div style="position:relative;width:350px;margin:auto">
+	    <div style="position:absolute;left:10px;top:10px">
+	        <input class="knob hour" data-min="0" data-max="24" data-bgColor="#333" data-fgColor="#ffec03" data-displayInput=false data-width="300" data-height="300" data-thickness=".3">
+	    </div>
+        <div style="position:absolute;left:60px;top:60px">
+            <input class="knob minute" data-min="0" data-max="60" data-bgColor="#333" data-displayInput=false data-width="200" data-height="200" data-thickness=".45">
+        </div>
+        <div style="position:absolute;left:110px;top:110px">
+            <input class="knob second" data-min="0" data-max="60" data-bgColor="#333" data-fgColor="rgb(127, 255, 0)" data-displayInput=false data-width="100" data-height="100" data-thickness=".3">
+        </div>
+	</div>
+    
+    
+</body>
+
+</html>

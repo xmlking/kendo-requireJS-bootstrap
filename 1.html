@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Project Title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="A preview of the jQuery UI Bootstrap theme.">
+	<meta name="author" content="Sumanth Chinthagunta">
+	
+	<!-- Bootstrap styles -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap.min.css" id="bootstrap-css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css">
+	
+	<!-- JQuery UI Bootstrap custom styles -->
+ 	<link rel="stylesheet" href="css/jquery-ui-bootstrap/jquery-ui-1.10.2.custom.css">
+	<!--[if lt IE 9]><link rel="stylesheet" href="css/jquery-ui-bootstrap/jquery.ui.1.10.2.ie.css"><![endif]-->
+
+	<!-- font-awesome styles -->	
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
+	<!--[if IE 7]><link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome-ie7.min.css"><![endif]-->
+	
+  	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+ 
+    <!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" 	 href="ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" 				 href="ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" 								 href="ico/favicon.png"> 
+	
+	<!-- JMWidget styles -->
+	<link rel="stylesheet" href="css/jmwidgets/base/jmwidgets-0.8.0.base.debug.css">
+	<link rel="stylesheet" href="css/jmwidgets/jmwidgets-0.8.0.allstyles.debug.css">
+		
+	<!-- bootswatch CSS for subnav fix , etc-->	
+	<link href="http://bootswatch.com/css/bootswatch.css" rel="stylesheet">
+	
+	<!-- page CSS -->
+	<!--  link rel="stylesheet" type="text/css" href="css/main.css" /-->
+	<style type="text/css">
+
+	</style>
+</head>
+<body class="preview" data-spy="scroll" data-target=".navbar" data-offset="80">
+
+	 <!-- Navbar
+    ================================================== -->
+	<nav class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="index.html">Bootstrap</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="index.html"><i class="icon-th icon-white"></i> Dashboard</a></li>
+              <li class=""><a href="#forecast"><i class="icon-signal icon-white"></i> Forecast</a></li>
+              <li class=""><a href="#analytics"><i class="icon-retweet icon-white"></i> Analytics</a></li>
+	          <li class="dropdown">
+	            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);"><i class="icon-globe icon-white"></i> Preview <b class="caret"></b></a>
+	            <ul class="dropdown-menu">
+					<li><a href="javascript:void(0);" onclick="$('#bootstrap-current').text('Normal'); $('#bootstrap-css').attr('href', '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap.min.css');">Normal</a></li>
+					<li class="divider"></li>
+					<li><a href="javascript:void(0);" onclick="$('#bootstrap-current').text('Amelia'); $('#bootstrap-css').attr('href', '//netdna.bootstrapcdn.com/bootswatch/2.3.2/amelia/bootstrap.min.css');">Amelia</a></li>
+					<li><a href="javascript:void(0);" onclick="$('#bootstrap-current').text('Cerulean'); $('#bootstrap-css').attr('href', '//netdna.bootstrapcdn.com/bootswatch/2.3.2/cerulean/bootstrap.min.css');">Cerulean</a></li>
+					<li><a href="javascript:void(0);" onclick="$('#bootstrap-current').text('Cyborg'); $('#bootstrap-css').attr('href', '//netdna.bootstrapcdn.com/bootswatch/2.3.2/cyborg/bootstrap.min.css');">Cyborg</a></li>
+					<li><a href="javascript:void(0);" onclick="$('#bootstrap-current').text('Journal'); $('#bootstrap-css').attr('href', '//netdna.bootstrapcdn.com/bootswatch/2.3.2/journal/bootstrap.min.css');">Journal</a></li>
+					<li><a href="javascript:void(0);" onclick="$('#bootstrap-current').text('Readable'); $('#bootstrap-css').attr('href', '//netdna.bootstrapcdn.com/bootswatch/2.3.2/journal/bootstrap.min.css');">Readable</a></li>
+					<li><a href="javascript:void(0);" onclick="$('#bootstrap-current').text('Simplex'); $('#bootstrap-css').attr('href', '//netdna.bootstrapcdn.com/bootswatch/2.3.2/simplex/bootstrap.min.css');">Simplex</a></li>
+					<li><a href="javascript:void(0);" onclick="$('#bootstrap-current').text('Slate'); $('#bootstrap-css').attr('href', '//netdna.bootstrapcdn.com/bootswatch/2.3.2/slate/bootstrap.min.css');">Slate</a></li>
+					<li><a href="javascript:void(0);" onclick="$('#bootstrap-current').text('Spacelab'); $('#bootstrap-css').attr('href', '//netdna.bootstrapcdn.com/bootswatch/2.3.2/spacelab/bootstrap.min.css');">Spacelab</a></li>
+					<li><a href="javascript:void(0);" onclick="$('#bootstrap-current').text('Spruce'); $('#bootstrap-css').attr('href', '//netdna.bootstrapcdn.com/bootswatch/2.3.2/spruce/bootstrap.min.css');">Spruce</a></li>
+					<li><a href="javascript:void(0);" onclick="$('#bootstrap-current').text('Superhero'); $('#bootstrap-css').attr('href', '//netdna.bootstrapcdn.com/bootswatch/2.3.2/superhero/bootstrap.min.css');">Superhero</a></li>
+					<li><a href="javascript:void(0);" onclick="$('#bootstrap-current').text('United'); $('#bootstrap-css').attr('href', '//netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css');">United</a></li>
+					<li class="divider"></li>
+					<li><a href="http://bootswatch.com/" target="_blank">Themes by Bootswatch</a></li>
+	            </ul>
+	          </li>              
+            </ul>
+	        <ul class="nav pull-right">
+             	<li class=""><a rel="tooltip" data-toggle="tooltip" title="Tooltip Default Messages" href="#Messages"><span class="badge badge-info">8</span> Messages   <i class="icon-share-alt"></i></a></li>
+				<li class=""><a rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom Notification"  href="#Notification"><span class="badge badge-info">5</span> Notification   <i class="icon-share-alt"></i></a></li>
+	        </ul>            
+          </div>
+        </div>
+      </div>
+	</nav>
+		
+ 	<div class="container"> 
+
+		<!-- Masthead
+		================================================== -->
+		<header class="jumbotron subhead">
+		  <div class="row">
+		    <div class="span6">
+		      <h1>Sumo Weather</h1>
+		      <p class="lead">The <span id="bootstrap-current">Normal</span> Theme.</p>
+		    </div>
+		    <aside class="span6">
+		      <div class="well">
+				<div class="btn-group">
+					<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">This week <span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li><a href="#">Today</a></li>
+						<li class="divider"></li>
+						<li><a href="#">This Week</a></li>
+						<li><a href="#">This Month</a></li>
+						<li><a href="#">This Quarter</a></li>
+						<li><a href="#">This year</a></li>
+					</ul>
+				</div>
+			  </div>
+		    </aside>
+		  </div>
+		  
+		  <div class="subnav">
+		    <ul class="nav nav-pills">
+		      <li><a href="#statistics">Statistics</a></li>
+		      <li><a href="#traffic">Traffic</a></li>
+		      <li><a href="#intro">Introducing</a></li>
+		      <li><a href="#forecast">Forecast</a></li>
+		      <li><a href="#analytics">Analytics</a></li>
+		      <li><a href="#miscellaneous">Miscellaneous</a></li>
+		    </ul>
+		  </div>
+		</header>
+
+		<!-- Statistics
+		================================================== -->
+		<section id="statistics" class="row-fluid" style="margin-top:20px">
+			<div class="span6">
+				<div class="widgetHead">Visits</div>
+				<div class="widgetBody">				
+					<div id="divChartVisitor" style="height:300px;"></div>
+				</div>
+			</div>
+			<div class="span6">
+				<div class="widgetHead">Site Statistics</div>
+				<div class="widgetBody">
+					<div>				
+						<table class="table table-bordered">
+							<tr>
+								<td style="width:40%">Visits</td>
+								<td>3,955</td>
+							</tr>
+							<tr>
+								<td>Unique Visitors</td>
+								<td>2649</td>
+							</tr>
+							<tr>
+								<td>Page Views</td>
+								<td>12,366</td>
+							</tr>
+							<tr>
+								<td>Avg. Visit Duration</td>
+								<td>00:10:35</td>
+							</tr>
+							<tr>
+								<td>Bounce Rate</td>
+								<td>22.68%</td>
+							</tr>
+							<tr>
+								<td>% New Visits</td>
+								<td>32.30%</td>
+							</tr>
+							<tr>
+								<td>% Returning Visits</td>
+								<td>67.60%</td>
+							</tr>
+							<tr>
+								<td>Visitor Growth</td>
+								<td>337.5%</td>
+							</tr>
+					    </table>
+					</div>
+				</div>
+			</div>	
+		</section>
+
+	    <hr class="soften">	
+	    
+		<!-- Traffic
+		================================================== -->		
+		<section id="traffic" class="row-fluid" style="margin-top:20px"> 
+			<div class="span4">
+				<div class="widgetHead">Traffic Sources</div>
+				<div class="widgetBody">				
+					<div id="divChartTrafficSource"></div>
+				</div>
+			</div>
+			<div class="span8">
+				<div class="widgetHead">Refferals</div>
+				<div class="widgetBody">
+					<div style="height:300px;">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<td style="width:50%">Source</td>
+									<td>Visits</td>
+									<td>Pages/Visit</td>
+									<td>% New Visits</td>
+									<td>Bouce Rate</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>facebook.com</td>
+									<td>49</td>
+									<td>04.50</td>
+									<td>22.02%</td>
+									<td>10.23%</td>			
+								</tr>
+								<tr>
+									<td>twitter.com</td>
+									<td>32</td>
+									<td>12.34</td>
+									<td>16.34%</td>
+									<td>18.78%</td>	
+								</tr>
+								<tr>
+									<td>rediff.com</td>
+									<td>23</td>
+									<td>03.23</td>
+									<td>72.55%</td>
+									<td>45.01%</td>			
+								</tr>
+								<tr>
+									<td>news.ycombinator.com</td>
+									<td>20</td>
+									<td>08.76</td>
+									<td>66.98%</td>
+									<td>22.65%</td>	
+								</tr>
+								<tr>
+									<td>36ohk6dgmcd1n-c.c.yom.mail.yahoo.net</td>
+									<td>12</td>
+									<td>01.59</td>
+									<td>04.13%</td>
+									<td>08.26%</td>	
+								</tr>					
+							</tbody>
+					    </table>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Introducing
+		================================================== -->				
+	    <section id="intro">
+		    <header>
+			    <h1>Introducing Bootstrap.</h1>
+			    <p class="marketing-byline">Need reasons to love Bootstrap? Look no further.</p>
+		 	</header>
+		    <article class="row-fluid">
+		      <div class="span4">
+		        <img class="marketing-img" src="http://twitter.github.io/bootstrap/assets/img/bs-docs-twitter-github.png">
+		        <h2>By nerds, for nerds.</h2>
+		        <p>Built at Twitter by <a href="http://twitter.com/mdo">@mdo</a> and <a href="http://twitter.com/fat">@fat</a>, Bootstrap utilizes <a href="http://lesscss.org">LESS CSS</a>, is compiled via <a href="http://nodejs.org">Node</a>, and is managed through <a href="http://github.com">GitHub</a> to help nerds do awesome stuff on the web.</p>
+		      </div>
+		      <div class="span4">
+		        <img class="marketing-img" src="http://twitter.github.io/bootstrap/assets/img/bs-docs-responsive-illustrations.png">
+		        <h2>Made for everyone.</h2>
+		        <p>Bootstrap was made to not only look and behave great in the latest desktop browsers (as well as IE7!), but in tablet and smartphone browsers via <a href="./scaffolding.html#responsive">responsive CSS</a> as well.</p>
+		      </div>
+		      <div class="span4">
+		        <img class="marketing-img" src="http://twitter.github.io/bootstrap/assets/img/bs-docs-bootstrap-features.png">
+		        <h2>Packed with features.</h2>
+		        <p>A 12-column responsive <a href="./scaffolding.html#gridSystem">grid</a>, dozens of components, <a href="./javascript.html">JavaScript plugins</a>, typography, form controls, and even a <a href="./customize.html">web-based Customizer</a> to make Bootstrap your own.</p>
+		      </div>
+		    </article>
+	    </section>
+	    
+	    <hr class="soften">	
+	    	 
+		<!-- Forecast
+		================================================== -->
+		<section id="forecast" class="row-fluid" style="margin-top:20px">
+			<div class="span6">
+				<div class="widgetHead">Visits</div>
+				<div class="widgetBody">				
+					<div id="divChartVisitor" style="height:300px;"></div>
+				</div>
+			</div>
+			<div class="span6">
+				<div class="widgetHead">Site Statistics</div>
+				<div class="widgetBody">
+					<div>				
+						<table class="table table-bordered">
+							<tr>
+								<td style="width:40%">Visits</td>
+								<td>3,955</td>
+							</tr>
+							<tr>
+								<td>Unique Visitors</td>
+								<td>2649</td>
+							</tr>
+							<tr>
+								<td>Page Views</td>
+								<td>12,366</td>
+							</tr>
+							<tr>
+								<td>Avg. Visit Duration</td>
+								<td>00:10:35</td>
+							</tr>
+							<tr>
+								<td>Bounce Rate</td>
+								<td>22.68%</td>
+							</tr>
+							<tr>
+								<td>% New Visits</td>
+								<td>32.30%</td>
+							</tr>
+							<tr>
+								<td>% Returning Visits</td>
+								<td>67.60%</td>
+							</tr>
+							<tr>
+								<td>Visitor Growth</td>
+								<td>337.5%</td>
+							</tr>
+					    </table>
+					</div>
+				</div>
+			</div>	
+		</section>
+
+	    <hr class="soften">	
+	    
+		<!-- Analytics
+		================================================== -->		
+		<section id="analytics" class="row-fluid" style="margin-top:20px"> 
+			<div class="span4">
+				<div class="widgetHead">Traffic Sources</div>
+				<div class="widgetBody">				
+					<div id="divChartTrafficSource"></div>
+				</div>
+			</div>
+			<div class="span8">
+				<div class="widgetHead">Refferals</div>
+				<div class="widgetBody">
+					<div style="height:300px;">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<td style="width:50%">Source</td>
+									<td>Visits</td>
+									<td>Pages/Visit</td>
+									<td>% New Visits</td>
+									<td>Bouce Rate</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>facebook.com</td>
+									<td>49</td>
+									<td>04.50</td>
+									<td>22.02%</td>
+									<td>10.23%</td>			
+								</tr>
+								<tr>
+									<td>twitter.com</td>
+									<td>32</td>
+									<td>12.34</td>
+									<td>16.34%</td>
+									<td>18.78%</td>	
+								</tr>
+								<tr>
+									<td>rediff.com</td>
+									<td>23</td>
+									<td>03.23</td>
+									<td>72.55%</td>
+									<td>45.01%</td>			
+								</tr>
+								<tr>
+									<td>news.ycombinator.com</td>
+									<td>20</td>
+									<td>08.76</td>
+									<td>66.98%</td>
+									<td>22.65%</td>	
+								</tr>
+								<tr>
+									<td>36ohk6dgmcd1n-c.c.yom.mail.yahoo.net</td>
+									<td>12</td>
+									<td>01.59</td>
+									<td>04.13%</td>
+									<td>08.26%</td>	
+								</tr>					
+							</tbody>
+					    </table>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	    
+	</div><!-- /container -->   
+	 
+	 <hr class="soften">	
+	 	 
+     <!-- Footer
+      ================================================== -->
+	<footer class="footer">
+    	<div class="container">
+        	<p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        	<p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        	<p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        	<ul class="footer-links">
+          		<li><a href="http://blog.getbootstrap.com">Blog</a></li>
+          		<li class="muted">&middot;</li>
+          		<li><a href="https://github.com/twitter/bootstrap/issues?state=open">Issues</a></li>
+          		<li class="muted">&middot;</li>
+          		<li><a href="https://github.com/twitter/bootstrap/blob/master/CHANGELOG.md">Changelog</a></li>
+        	</ul>
+      	</div>
+    </footer>
+	
+	<!-- Placed at the end of the document so the pages load faster -->
+
+	<!-- CDN-based script reference for jQuery; utilizing a local reference if offline -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+    
+     <!-- CDN-based script reference for Kendo UI DataViz; utilizing a local reference if offline -->
+<!--     <script src="http://cdn.kendostatic.com/2012.2.710/js/kendo.dataviz.min.js"></script>
+    <script>(window.kendo && window.kendo.dataviz) || document.write('<script src="js/kendo.dataviz.min.js"><\/script>')</script> -->
+    
+	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
+	<script src="js/jquery-ui-bootstrap/jquery-ui-1.10.2.custom.min.js"></script>
+	<script src="js/bootstrap/holder.js"></script>
+	<script src="js/bootstrap/docs.js"></script>
+	<script src="js/bootstrap/demo.js"></script>
+	<!-- JMWidget JS -->
+	<script src="js/jmwidgets/jmwidgets-0.8.0.min.js"></script>
+	<!-- bootswatch JS for subnav fix , etc-->	
+	<script src="http://bootswatch.com/js/jquery.smooth-scroll.min.js"></script>
+	<script src="http://bootswatch.com/js/bootswatch.js"></script>
+	
+	<script type="text/javascript">
+			$(document).ready(function(){
+				$("#page1").hmiPage();
+				$("#bdr1").hmiBorder({shape:'round', style:'gauge1'} );	
+				$("#needle1").hmiNeedle( {type:'round', value:0, startAngle:25, stopAngle:155, initAngle:180, min:0, max:100, ctr:{dy:45}, scale:{x:1.1, y:1.5} } );	
+				$("#bdr2").hmiBorder({shape:'vert', style:'gauge1'} );	
+				$("#needle2").hmiNeedle( {type:'vert', value:0, min:0, max:100} );	
+				$("#bdr3").hmiBorder({shape:'horiz', style:'gauge1'} );	
+				$("#needle3").hmiNeedle( {type:'horiz', value:0, min:0, max:100, align:'bottom'} );	
+				$("#slider1").hmiSlider({type:'horiz' });	
+				
+				$("#needle1").hmiAttach("#slider1", { tag:'value', attr:'value' });
+				$("#needle2").hmiAttach("#slider1", { tag:'value', attr:'value' });
+				$("#needle3").hmiAttach("#slider1", { tag:'value', attr:'value' });
+ 			});
+
+	</script>
+
+</body>
+</html>
