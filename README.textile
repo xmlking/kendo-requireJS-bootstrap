@@ -1,0 +1,91 @@
+h1(main). kendo-requireJS-bootstrap
+
+AMD-aware Kendo UI project template with Twitter Bootstrap and Themes
+
+p. This is a boilerplate project for building AMD-aware(modular), widget driven _non-trivial_ web applications.  
+
+h2. Features
+
+# *AMD(Asynchronous Module Definition)-Aware :* For Dependency Management, Asynchronous Resource Loading, Lazy Loading with "RequireJS(Asynchronous Module Definition)":http://requirejs.org/docs/whyamd.html. 
+# *CSS Framework :* For base CSS, responsive grids, layouts, and components with "Twitter Bootstrap":http://twitter.github.io/bootstrap/
+# *Themes :* Saving the web from default Bootstrap theme with "Bootswatch":http://bootswatch.com
+# *Modernizr :* A browser feature detection library, includes polyfills, HTML5 Shiv, YepNope.js for conditional resource loading. 
+# *Kendo UI :* Rich UI widgets for data visualization and client-side MVC framework for Mobile and Web app development. 
+# *Custom Kendo UI widgets :* checkout AMD-Aware Console & LED widgets
+ 
+
+h2.  Scaffolding
+
+
+bc. 
+WebApp:
+	crossdomain.xml
+	dashboard.html
+	index.html
+	users.html
+	LICENSE
+	README.textile
+	ico: (apple-touch-icon-*-precomposed.png, favicon.ico, favicon.png)
+	img: (App images)
+	css: main.css
+	scripts:
+		config.js   (requireJS config)
+		dashboardPage.js  (dashboard module main)
+		dashboard:   (your module)
+			main.js
+			router.js
+			models:
+			templates:
+			viewModels:
+			views:
+		users:  (your module)
+		partials:  (partial HTML templates)
+			_grid.html
+			_list.html
+		utils:  (app utils module)
+			main.js
+		libs:  (3rd/reusable  party modules)
+			bootstrap:
+				css:
+					bootstrap-responsive.css
+					bootstrap-responsive.min.css
+					bootstrap.css
+					bootstrap.min.css
+				img:
+					glyphicons-halflings-white.png
+					glyphicons-halflings.png
+				js:
+					bootstrap.js
+					bootstrap.min.js
+				main.js
+			console: (custom widget)
+			holder:
+			jquery:
+			kendo:
+			modernizr:
+			pnotify:
+			require: (AMD loaders , plugins)
+				css.js
+				domReady.js
+				i18n.js
+				is.js
+				json.js
+				require.js
+				text.js
+	services: (dummy services for testing)
+		april-sales.json
+		boeing-stock.json
+		crime-stats.json
+		job-stats.json
+		readme.txt
+
+
+h2. TODO
+
+# Use HTML DSL(Domain Specific Language) syntax for declarative initialization of widgets.
+# Integrate with AngularJS and demo Lazy Loading of UI widgets & Modules
+
+h2. References
+
+* "Writing Modular JavaScript With AMD":http://addyosmani.com/writing-modular-js/
+* "SPA(Single-Page App) with Kendo UI":http://demos.kendoui.com/websushi/
