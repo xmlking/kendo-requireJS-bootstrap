@@ -16,7 +16,7 @@ h2. Features
 
 h2.  Scaffolding
 
-bc..
+bc. .
 
 WebApp:
 	crossdomain.xml
