@@ -41,7 +41,6 @@ WebApp:
 		partials:  (partial HTML templates)
 			_grid.html
 			_list.html
-
 		utils:  (app utils module)
 			main.js
 		libs:  (3rd/reusable  party modules)
@@ -72,8 +71,6 @@ WebApp:
 				json.js
 				require.js
 				text.js
-
-
 	services: (dummy services for testing)
 		april-sales.json
 		boeing-stock.json
